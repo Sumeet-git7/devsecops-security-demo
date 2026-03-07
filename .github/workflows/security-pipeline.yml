@@ -1,0 +1,35 @@
+name: DevSecOps Security Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install Bandit
+      run: pip install bandit
+
+    - name: Run Bandit SAST Scan
+      run: bandit -r .
+
+    - name: Install Dependency Check
+      run: |
+        wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.2.1/dependency-check-8.2.1-release.zip
+        unzip dependency-check-8.2.1-release.zip
+
+    - name: Run Dependency Check
+      run: |
+        ./dependency-check/bin/dependency-check.sh --scan . --format HTML
