@@ -34,3 +34,9 @@ jobs:
     #- name: Run Dependency Check
     #  run: |
     #    ./dependency-check/bin/dependency-check.sh --scan . --format HTML
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
