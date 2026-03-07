@@ -1,4 +1,4 @@
-"""import os
+import os
 
 def run():
     user_input = input("Enter command: ")
@@ -7,9 +7,9 @@ def run():
 if __name__ == "__main__":
     run()
 
+
+
 """
-
-
 import subprocess
 
 def run():
@@ -18,3 +18,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+"""
