@@ -31,9 +31,9 @@ jobs:
         unzip dependency-check-8.2.1-release.zip
 
     
-    #- name: Run Dependency Check
-    #  run: |
-    #    ./dependency-check/bin/dependency-check.sh --scan . --format HTML
+    - name: Run Dependency Check
+      run: |
+        ./dependency-check/bin/dependency-check.sh --scan . --format HTML
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
